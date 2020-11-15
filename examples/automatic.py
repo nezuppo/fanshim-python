@@ -7,6 +7,7 @@ import argparse
 import time
 import signal
 import sys
+import os
 
 
 parser = argparse.ArgumentParser()
@@ -118,7 +119,8 @@ if not args.nobutton:
     def release_handler(was_held):
         global armed
         if was_held:
-            set_automatic(not armed)
+#           set_automatic(not armed)
+            os.system('systemctl poweroff')
         elif not armed:
             set_fan(not enabled)
 
